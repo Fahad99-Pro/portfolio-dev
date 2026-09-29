@@ -12,6 +12,17 @@ function getEmail() {
   return EMAIL_PARTS[0] + "@" + EMAIL_PARTS[1] + "." + EMAIL_PARTS[2];
 }
 
+/* Before/After slider — clip-path + range input (keyboard-accessible) */
+function initBaSlider(root) {
+  root.querySelectorAll(".ba-slider").forEach((slider) => {
+    const range = slider.querySelector(".ba-range");
+    if (!range) return;
+    const update = () => slider.style.setProperty("--pos", range.value + "%");
+    range.addEventListener("input", update);
+    update();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
@@ -160,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lastFocusedEl = document.activeElement;
     modalContent.innerHTML = buildModalHTML(project);
+    initBaSlider(modalContent);
     modalOverlay.classList.add("open");
     document.body.style.overflow = "hidden";
     if (modalClose) modalClose.focus();
@@ -287,6 +299,29 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("mouseleave", () => {
         btn.style.transform = "";
       });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+   * 12. Hide WhatsApp float while the contact section is on screen
+   * ---------------------------------------------------------------- */
+  const waFloat = document.getElementById("waFloat");
+  const contactSection = document.getElementById("contact");
+  if (waFloat && contactSection && "IntersectionObserver" in window) {
+    new IntersectionObserver(
+      ([entry]) => waFloat.classList.toggle("hidden", entry.isIntersecting),
+      { threshold: 0.15 }
+    ).observe(contactSection);
+  }
+
+  /* ------------------------------------------------------------------
+   * 13. Dynamic "available" month label (auto-updates over time)
+   * ---------------------------------------------------------------- */
+  const availDate = document.getElementById("availDate");
+  if (availDate) {
+    availDate.textContent = new Date().toLocaleString("en-US", {
+      month: "long",
+      year: "numeric",
     });
   }
 });
@@ -477,9 +512,46 @@ function buildModalHTML(p) {
         <span class="chip">${p.category}</span>
         <span class="chip">${p.year}</span>
         <span class="chip">Case study</span>
+        <span class="chip chip-concept">Concept project</span>
       </div>
 
       <p class="modal-summary">${p.summary}</p>
+
+      <div class="modal-section">
+        <h4>Before &amp; after</h4>
+        <div class="ba-wrap">
+          <div class="ba-slider">
+            <div class="ba-layer ba-after ${p.className}">
+              <div class="art-device">
+                <div class="ad-bar"></div>
+                <div class="ad-hero ${p.className}">${p.title}</div>
+                <div class="ad-lines"><i></i><i></i><i></i></div>
+              </div>
+              <span class="ba-label ba-label-after">After</span>
+            </div>
+            <div class="ba-layer ba-before">
+              <div class="ba-old">
+                <div class="ba-old-header">~ Welcome to my website ~</div>
+                <div class="ba-old-rows"><i></i><i></i><i></i><i></i></div>
+                <div class="ba-old-btn">Click here</div>
+              </div>
+              <span class="ba-label ba-label-before">Before</span>
+            </div>
+            <div class="ba-handle" aria-hidden="true"><span>⟷</span></div>
+            <input
+              class="ba-range"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              aria-label="Drag to compare before and after"
+            />
+          </div>
+          <p class="ba-caption">
+            Drag the handle — this is the kind of transformation I design for.
+          </p>
+        </div>
+      </div>
 
       <div class="modal-section">
         <h4>The challenge</h4>
@@ -530,7 +602,7 @@ function buildModalHTML(p) {
 
       <div class="modal-actions">
         <a class="btn btn-coral" href="#contact" onclick="document.getElementById('modalClose').click();">
-          Start a project like this
+          Book a free 20-minute call
           <span class="btn-arrow">→</span>
         </a>
         <a class="btn btn-ink" href="#work" onclick="document.getElementById('modalClose').click();">
