@@ -2357,3 +2357,86 @@ ul {
     top: -40px;
   }
 }
+
+
+/* ==========================================================================
+   PHASE 4 — Mobile responsiveness & hero-order fixes
+   ========================================================================== */
+
+/* Hero on mobile: identity TITLE at the very top, browser mock ("yourbusiness.com")
+   moves BELOW it. (Overrides the old .hero-visual { order: -1 } rule.) */
+@media (max-width: 980px) {
+  .hero-copy {
+    order: -1;
+  }
+
+  .hero-visual {
+    order: 0;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-name {
+    font-size: clamp(2.9rem, 13.5vw, 4.4rem);
+  }
+
+  .hero-tagline {
+    font-size: 1.18rem;
+  }
+
+  .hero-meta {
+    gap: 16px 22px;
+  }
+
+  .spin-badge {
+    width: 96px;
+    height: 96px;
+    right: 2vw;
+    bottom: -18px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    gap: 12px;
+  }
+
+  .stat b {
+    font-size: 1.55rem;
+  }
+
+  /* Long email must never overflow its row on phones */
+  .contact-detail {
+    flex-wrap: wrap;
+  }
+
+  .contact-detail a,
+  .contact-detail b {
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-btn {
+    margin-left: 0;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-body {
+    padding: 22px 18px;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}
