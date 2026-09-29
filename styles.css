@@ -2219,3 +2219,141 @@ ul {
     bottom: 16px;
   }
 }
+
+
+/* ==========================================================================
+   PHASE 3 — Hero identity title + statement band
+   ========================================================================== */
+
+.hero-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 9.5vw, 7rem);
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  margin-bottom: 16px;
+}
+
+.hero-tagline {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 2.15rem);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: rgba(244, 241, 234, 0.88);
+}
+
+.hero-tagline em {
+  position: relative;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--coral);
+  white-space: nowrap;
+}
+
+.hero-tagline em svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.16em;
+  width: 100%;
+  height: 0.22em;
+  overflow: visible;
+}
+
+.statement {
+  background: var(--lime);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.statement::before {
+  content: "✦";
+  position: absolute;
+  font-size: 26rem;
+  line-height: 1;
+  right: -40px;
+  top: -90px;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.statement-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.45fr 0.55fr;
+  gap: clamp(28px, 5vw, 60px);
+  align-items: center;
+}
+
+.statement-line {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.3rem, 5.6vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.statement-line em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.statement-line .accent {
+  position: relative;
+  display: inline-block;
+}
+
+.statement-line .accent svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.14em;
+  width: 100%;
+  height: 0.22em;
+  overflow: visible;
+}
+
+.statement-side p {
+  font-size: 1.06rem;
+  line-height: 1.65;
+  color: rgba(20, 20, 25, 0.78);
+  margin-bottom: 20px;
+}
+
+.statement-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.statement-chips li {
+  padding: 9px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s;
+}
+
+.statement-chips li:hover {
+  background: var(--ink);
+  color: var(--lime);
+}
+
+@media (max-width: 980px) {
+  .statement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .statement::before {
+    font-size: 16rem;
+    top: -40px;
+  }
+}
