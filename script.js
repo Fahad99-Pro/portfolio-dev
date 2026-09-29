@@ -4,6 +4,14 @@
    counters, copy email, form handling.
    ========================================================================== */
 
+/* Email assembled from parts at runtime → never appears as a plain
+   address in any file's source. Stops "[email protected]" obfuscation
+   (Cloudflare etc.) and makes scraper harvesting harder. */
+const EMAIL_PARTS = ["iam.fahmidislamfahad", "gmail", "com"];
+function getEmail() {
+  return EMAIL_PARTS[0] + "@" + EMAIL_PARTS[1] + "." + EMAIL_PARTS[2];
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
@@ -190,25 +198,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ------------------------------------------------------------------
-   * 7. Copy email to clipboard
+   * 7. Email: render address via JS + copy button
    * ---------------------------------------------------------------- */
+  const emailAddress = getEmail();
+  document.querySelectorAll(".js-mail").forEach((el) => {
+    el.textContent = emailAddress;
+    el.href = "mailto:" + emailAddress;
+  });
+
   const copyBtn = document.getElementById("copyEmail");
   if (copyBtn) {
     copyBtn.addEventListener("click", async () => {
-      const email = copyBtn.dataset.email;
       try {
-        await navigator.clipboard.writeText(email);
+        await navigator.clipboard.writeText(emailAddress);
         const original = copyBtn.textContent;
         copyBtn.textContent = "Copied ✓";
         setTimeout(() => (copyBtn.textContent = original), 1800);
       } catch {
-        window.location.href = `mailto:${email}`;
+        window.location.href = "mailto:" + emailAddress;
       }
     });
   }
 
   /* ------------------------------------------------------------------
-   * 8. Contact form (demo submit)
+   * 8. Contact form → functional mailto composer (no backend needed)
    * ---------------------------------------------------------------- */
   const contactForm = document.getElementById("contactForm");
   const formSuccess = document.getElementById("formSuccess");
@@ -216,11 +229,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      const data = new FormData(contactForm);
+      const name = (data.get("name") || "").toString().trim();
+      const replyTo = (data.get("email") || "").toString().trim();
+      const type = (data.get("type") || "").toString();
+      const budget = (data.get("budget") || "").toString();
+      const message = (data.get("message") || "").toString().trim();
+
+      const subject = "Project enquiry — " + type + " — " + name;
+      const body = [
+        "Hi Fahmid,",
+        "",
+        message,
+        "",
+        "————————————",
+        "Name: " + name,
+        "Reply to: " + replyTo,
+        "Project type: " + type,
+        "Budget: " + budget,
+        "",
+        "Sent from your portfolio contact form",
+      ].join("\n");
+
+      window.location.href =
+        "mailto:" +
+        getEmail() +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
       if (formSuccess) {
         formSuccess.classList.add("show");
         formSuccess.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
-      contactForm.reset();
+      /* Form keeps its content in case the mail app didn't open. */
     });
   }
 
