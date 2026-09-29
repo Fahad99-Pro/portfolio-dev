@@ -6,9 +6,66 @@
     <title>Fahmid Islam Fahad — Web Designer &amp; Developer for Growing Businesses</title>
     <meta
       name="description"
-      content="Fahmid Islam Fahad — freelance web designer &amp; developer helping small businesses turn visitors into customers. Strategy, design and development. Bangla &amp; English. Remote, worldwide."
+      content="Fahmid Islam Fahad — freelance web designer &amp; developer helping small businesses turn visitors into customers. Strategy, design and development. English. Remote, worldwide."
     />
     <meta name="theme-color" content="#141419" />
+    <!-- FAQ schema — matches the FAQ section -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a website cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on scope — but every quote is a fixed price agreed before we begin, with no hourly surprises. Tell me about your project and you'll have a clear quote within 24 hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a project take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most landing pages ship in about a week; business sites in 2–3 weeks; e-commerce stores in 3–4 weeks. I take a limited number of projects at once, so yours never sits in a queue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many revisions do I get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project includes revision rounds (1–3 depending on scope). I design in the open — you review at every milestone — so surprises are rare and tweaks stay small."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you need from me to start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your logo or brand assets if you have them, your content (or I can help with copy direction), and one decision-maker for feedback. That's it — I handle the rest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with clients outside Bangladesh?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — I work remotely with clients worldwide and communicate in English. Timezone overlap with Europe and most of the US works well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project includes launch support, basic SEO setup, and a handover walkthrough so you stay in control. Ongoing care plans (updates, backups, small changes) are available monthly."
+      }
+    }
+  ]
+}
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -24,11 +81,11 @@
         <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
-        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn btn-coral header-cta" href="#contact">Let's talk</a>
+      <a class="btn btn-coral header-cta" href="#contact">Book a free call</a>
 
       <button
         class="nav-toggle"
@@ -45,6 +102,7 @@
         <a href="#process">Process</a>
         <a href="#about">About</a>
         <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -62,7 +120,8 @@
           <div class="hero-copy">
             <p class="hero-badge">
               <span class="dot" aria-hidden="true"></span>
-              Available for freelance projects · October 2026
+              Available for freelance projects ·
+              <span id="availDate">September 2026</span>
             </p>
 
             <h1>
@@ -90,10 +149,10 @@
             </p>
 
             <div class="hero-ctas">
-              <a class="btn btn-coral" href="#work">
-                See my work <span class="btn-arrow">→</span>
+              <a class="btn btn-coral" href="#contact">
+                Book a free 20-minute call <span class="btn-arrow">→</span>
               </a>
-              <a class="btn btn-ghost" href="#contact">Book a free call</a>
+              <a class="btn btn-ghost" href="#work">See my work</a>
             </div>
 
             <div class="hero-meta">
@@ -106,7 +165,7 @@
                 <span>projects shipped</span>
               </div>
               <div>
-                <strong>Bangla + EN</strong>
+                <strong>English</strong>
                 <span>client communication</span>
               </div>
               <div>
@@ -193,7 +252,7 @@
       <!-- ================= SOCIAL PROOF =================
            Video: logos/testimonials right after the hero to build trust. -->
       <section class="proof" aria-label="Clients">
-        <p class="proof-label">Trusted by growing businesses worldwide</p>
+        <p class="proof-label">Brands featured in these case studies</p>
         <div class="logo-row">
           <div class="client-logo"><span class="mark">V</span> Verdant Roots</div>
           <div class="client-logo"><span class="mark">C</span> Café Lumière</div>
@@ -215,9 +274,9 @@
                 Real projects.<br /><em>Real</em> business results.
               </h2>
               <p class="section-lead">
-                Six case studies across different industries — every one shows
-                the process behind the result, and exactly what I did. Filter by
-                lane, or dive straight in.
+                Six concept case studies across different industries — every
+                one shows the process behind the result, and exactly what I did.
+                Filter by lane, or dive straight in.
               </p>
             </div>
           </div>
@@ -254,6 +313,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>Verdant Roots</h3>
                   <p>An organic plant shop that grew 42% in online sales.</p>
                 </div>
@@ -283,6 +343,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>Café Lumière</h3>
                   <p>A cosy bistro brand and reservations site that fills tables.</p>
                 </div>
@@ -312,6 +373,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>PeakForm Studio</h3>
                   <p>A coaching platform that books clients while the coach sleeps.</p>
                 </div>
@@ -341,6 +403,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>Nimbus Ledger</h3>
                   <p>A fintech landing page that made a complex product feel simple.</p>
                 </div>
@@ -370,6 +433,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>Wanderlight Travel</h3>
                   <p>A boutique travel agency site that inspires the trip first.</p>
                 </div>
@@ -399,6 +463,7 @@
               </div>
               <div class="project-info">
                 <div>
+                  <span class="concept-badge">Concept project</span>
                   <h3>Kintsugi Ceramics</h3>
                   <p>An artisan pottery shop where every piece tells its story.</p>
                 </div>
@@ -406,6 +471,12 @@
               </div>
             </article>
           </div>
+
+          <p class="work-footnote reveal">
+            ✦ Every project above is a <strong>concept project</strong> —
+            clearly labelled — built to show exactly how I work. Real client
+            case studies slot straight into this grid whenever you're ready.
+          </p>
         </div>
       </section>
 
@@ -464,8 +535,8 @@
           <p class="process-note reveal">
             <strong>One dedicated partner</strong> — you work directly with me
             from first call to launch day. No account managers, no hand-offs, no
-            surprises in the invoice. Communication in Bangla or English, your
-            choice.
+            surprises in the invoice. Clear, jargon-free communication at every
+            step.
           </p>
         </div>
       </section>
@@ -497,7 +568,7 @@
               Fully <strong>self-taught</strong> and endlessly curious, I wear
               many hats by design: strategy, visual design in Figma, front-end
               code, SEO and launch support. Working remotely with clients
-              worldwide, in <strong>Bangla and English</strong>. You get one
+              worldwide, in <strong>English</strong>. You get one
               person who sees the whole picture — and cares about the result as
               much as you do.
             </p>
@@ -601,12 +672,76 @@
         </div>
       </section>
 
+      <!-- ================= FAQ ================= -->
+      <section class="section faq" id="faq">
+        <div class="container">
+          <div class="reveal">
+            <p class="eyebrow">FAQ</p>
+            <h2 class="section-title">
+              Questions? <em>Answered.</em>
+            </h2>
+          </div>
+
+          <div class="faq-list reveal">
+            <details class="faq-item" open>
+              <summary>How much does a website cost?</summary>
+              <div class="faq-a">
+                It depends on scope — but every quote is a <strong>fixed
+                price</strong> agreed before we begin, with no hourly surprises.
+                Tell me about your project and you'll have a clear quote within
+                24 hours.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>How long does a project take?</summary>
+              <div class="faq-a">
+                Most landing pages ship in about a week; business sites in
+                2–3 weeks; e-commerce stores in 3–4 weeks. I take a limited
+                number of projects at once, so yours never sits in a queue.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>How many revisions do I get?</summary>
+              <div class="faq-a">
+                Every project includes revision rounds (1–3 depending on
+                scope). I design in the open — you review at every milestone —
+                so surprises are rare and tweaks stay small.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>What do you need from me to start?</summary>
+              <div class="faq-a">
+                Your logo or brand assets if you have them, your content (or
+                I can help with copy direction), and one decision-maker for
+                feedback. That's it — I handle the rest.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Do you work with clients outside Bangladesh?</summary>
+              <div class="faq-a">
+                Yes — I work remotely with clients worldwide and communicate
+                in <strong>English</strong>. Timezone overlap with
+                Europe and most of the US works well.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>What happens after launch?</summary>
+              <div class="faq-a">
+                Every project includes launch support, basic SEO setup, and a
+                handover walkthrough so you stay in control. Ongoing care plans
+                (updates, backups, small changes) are available monthly.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= CTA BAND ================= -->
       <section class="cta-band">
         <div class="container cta-inner">
           <h2>Have a project <em>in mind?</em></h2>
           <a class="btn btn-coral" href="#contact">
-            Get a free quote <span class="btn-arrow">→</span>
+            Book a free 20-minute call <span class="btn-arrow">→</span>
           </a>
         </div>
       </section>
@@ -660,7 +795,7 @@
                 <div class="icon" aria-hidden="true">💬</div>
                 <div>
                   <small>Languages</small>
-                  <b>Bangla &amp; English</b>
+                  <b>English</b>
                 </div>
               </div>
 
@@ -768,9 +903,9 @@
           <a class="logo" href="#top">FAHMID<span class="logo-dot">.</span></a>
           <nav class="footer-nav" aria-label="Footer">
             <a href="#work">Work</a>
-            <a href="#process">Process</a>
+                <a href="#process">Process</a>
             <a href="#about">About</a>
-            <a href="#testimonials">Reviews</a>
+            <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
           </nav>
           <a class="back-top" href="#top">Back to top ↑</a>
@@ -784,6 +919,20 @@
         </div>
       </div>
     </footer>
+
+    <!-- Floating WhatsApp CTA -->
+    <a
+      class="wa-float"
+      id="waFloat"
+      href="https://wa.me/8801317590431?text=Hi%20Fahmid!%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project."
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat with Fahmid on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+    </a>
 
     <!-- ================= CASE-STUDY MODAL ================= -->
     <div
@@ -802,5 +951,5 @@
     </div>
 
     <script src="script.js"></script>
-  </body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42ba73e0aeeb60e',t:'MTc5MDY5MTg4NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
