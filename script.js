@@ -303,13 +303,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------------
-   * 12. Hide WhatsApp float while the contact section is on screen
+   * 12. Hide Instagram float while the contact section is on screen
    * ---------------------------------------------------------------- */
-  const waFloat = document.getElementById("waFloat");
+  const instaFloat = document.getElementById("instaFloat");
   const contactSection = document.getElementById("contact");
-  if (waFloat && contactSection && "IntersectionObserver" in window) {
+  if (instaFloat && contactSection && "IntersectionObserver" in window) {
     new IntersectionObserver(
-      ([entry]) => waFloat.classList.toggle("hidden", entry.isIntersecting),
+      ([entry]) => instaFloat.classList.toggle("hidden", entry.isIntersecting),
       { threshold: 0.15 }
     ).observe(contactSection);
   }
