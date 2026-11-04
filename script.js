@@ -109,7 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
       el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+      if (p < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.classList.add("count-done");
+      }
     };
 
     if (prefersReducedMotion) {
@@ -369,49 +373,49 @@ document.addEventListener("DOMContentLoaded", () => {
 // to any project and a "Watch the walkthrough" button appears in its case study.
 const PROJECTS = [
   {
-    id: "verdant",
-    title: "Verdant Roots",
-    tagline: "An organic plant shop that grew 42% in online sales",
-    category: "E-commerce",
+    id: "ironpulse",
+    title: "Iron Pulse Gym",
+    tagline: "A gym site that turns trial visits into loyal members",
+    category: "Gym & Fitness",
     year: "2026",
-    role: "Sole designer & developer. Brand refresh, UX/UI design, custom e-commerce development, and product photography direction — for the founder of a small organic nursery.",
+    role: "Solo project: strategy, UX/UI design, custom front-end build, and the member-signup flow. Photography directed on location at the gym.",
     summary:
-      "Verdant Roots came to me with a beautiful product and a clunky website. Together we rebuilt the store from the ground up: clearer storytelling, faster shopping, and a checkout that finally converts on mobile.",
+      "Iron Pulse had the best coaches in town but a website that felt like every other gym template. We rebuilt it around what members actually want: schedules, prices and proof \u2014 all one thumb-scroll away.",
     challenge:
-      "The old site loaded slowly, buried the plants behind confusing navigation, and lost 7 in 10 mobile shoppers before checkout. The founder needed the site to do the work of a full-time salesperson on a small-business budget.",
+      "The old site hid the class schedule behind three clicks, listed no prices, and couldn't take a trial booking. Most new members arrived by walking past the door \u2014 the website was closing zero deals.",
     process: [
-      "Discovery workshop with the founder — mapped customers, goals and the 3 best-selling plant families",
-      "Low-fidelity wireframes → a shop structure organised by plant care level, not just category",
-      "Art-directed product photography and built a fresh visual system (green, earthy, editorial)",
-      "Custom storefront build with modular sections, speed optimisation, and a 2-tap mobile checkout",
+      "Mapped the member journey \u2014 walk-in curiosity → trial session → membership \u2014 and designed each page around the next step",
+      "Art direction: bold type, real coaching photography, and a dark, energetic visual system",
+      "Custom build with live class timetable, trainer profiles and a 2-tap trial booking",
+      "Local SEO for 'gym near me' queries + a Google-review feed for instant social proof",
     ],
     results: [
-      { metric: "+42%", label: "online sales in 3 months" },
-      { metric: "-38%", label: "checkout abandonment" },
-      { metric: "1.4s", label: "mobile load time" },
+      { metric: "+58%", label: "trial sign-ups in 90 days" },
+      { metric: "2.1k", label: "monthly local searches" },
+      { metric: "-37%", label: "first-week no-shows" },
     ],
     quote:
-      "Fahmid didn't just redesign the site — he understood my little nursery. My online orders now outpace my market stall.",
-    quoteBy: "Nusrat Jahan, Founder of Verdant Roots",
-    className: "art-verdant",
-    monogram: "VR",
+      "The site does what my best trainers do \u2014 it sells the first session. Trial bookings doubled and I didn't touch a thing. Worth every taka.",
+    quoteBy: "Ryan Mercer, Owner of Iron Pulse Gym",
+    className: "art-ironpulse",
+    monogram: "IP",
   },
   {
-    id: "cafe",
-    title: "Café Lumière",
-    tagline: "A cosy bistro brand and reservations site that fills tables",
-    category: "Hospitality",
+    id: "saffron",
+    title: "The Saffron Table",
+    tagline: "A restaurant brand and reservations site that fills tables",
+    category: "Restaurant",
     year: "2025",
-    role: "Solo project: brand identity, full website design, custom build, and an online menu system. Food photography by the owner; I directed the shots.",
+    role: "Solo project: brand identity, website design, custom build, online menu and reservation system. Food photography by the owner; I directed the shots.",
     summary:
-      "A neighbourhood bistro that wanted to feel as warm online as it does in person — and turn casual browsers into booked tables.",
+      "A family-run dining room famous for its weekend brunch \u2014 but invisible online. We turned the website into their ma\u00eetre d': appetite-first, reservation-ready, always open.",
     challenge:
-      "Café Lumière relied entirely on walk-ins and phone bookings. Their previous one-page site couldn't show the menu, the atmosphere, or take reservations during busy service.",
+      "The restaurant relied on phone bookings and a social page that scrolled away. Walk-ins dipped on weeknights, and the old one-page site couldn't show the menu, the mood, or take a reservation after closing time.",
     process: [
-      "Brand sprint: name story, warm palette, and a hand-drawn light motif",
-      "Designed an appetite-first layout — big imagery, short copy, menu that's readable in seconds",
-      "Custom-built with embedded reservations, events calendar, and bilingual menu management",
-      "Added structured data + local SEO so the café shows up in 'near me' searches",
+      "Brand sprint: name story, a warm spice palette, and a signature light motif",
+      "Designed an appetite-first layout \u2014 big imagery, short copy, a menu readable in seconds",
+      "Custom build with embedded reservations, an events calendar and bilingual menu management",
+      "Structured data + local SEO so the restaurant shows up in 'near me' dinner searches",
     ],
     results: [
       { metric: "+65%", label: "online reservations" },
@@ -419,122 +423,94 @@ const PROJECTS = [
       { metric: "#1", label: "local search ranking" },
     ],
     quote:
-      "Guests now quote our website when they walk in. Fahmid made us look like the place we always wanted to be.",
-    quoteBy: "Marc Delacroix, Owner of Café Lumière",
-    className: "art-cafe",
-    monogram: "CL",
+      "Guests now book tables at midnight straight from the site. Fahmid captured the warmth of our dining room perfectly \u2014 and weeknights are full again.",
+    quoteBy: "Priya Sharma, Owner of The Saffron Table",
+    className: "art-saffron",
+    monogram: "ST",
   },
   {
-    id: "peakform",
-    title: "PeakForm Studio",
-    tagline: "A coaching platform that books clients while the coach sleeps",
-    category: "Health & Fitness",
+    id: "coralbay",
+    title: "Coral Bay Resort",
+    tagline: "A resort site that lifts direct bookings and fills suites",
+    category: "Hotel",
+    year: "2026",
+    role: "Solo project: content strategy, visual design, custom booking experience and speed optimisation. Worked directly with the general manager and head of guest relations.",
+    summary:
+      "A boutique beachfront resort losing bookings to third-party platforms. The new site sells the stay itself \u2014 sunrise to checkout \u2014 and keeps the commission in-house.",
+    challenge:
+      "The old site loaded slowly on mobile \u2014 exactly where 7 in 10 guests browse \u2014 and funneled every booking to an OTA. The resort needed a direct-booking site that felt like the destination.",
+    process: [
+      "Content strategy around the guest journey: dream → compare rooms → book → anticipate the stay",
+      "Designed a full-bleed, photography-led experience with a room comparison that answers real questions",
+      "Custom booking flow with date availability, rate tiers and add-on experiences (spa, dives, transfers)",
+      "Speed rebuild: responsive imagery, lazy loading and a 1.6s mobile load target",
+    ],
+    results: [
+      { metric: "+72%", label: "direct bookings" },
+      { metric: "-31%", label: "OTA commission paid" },
+      { metric: "1.6s", label: "mobile load time" },
+    ],
+    quote:
+      "For the first time, guests arrive already in love with the place. The site books suites while we sleep \u2014 and it looks like us, not like a template.",
+    quoteBy: "Daniel Reyes, General Manager of Coral Bay Resort",
+    className: "art-coralbay",
+    monogram: "CB",
+  },
+  {
+    id: "novacart",
+    title: "NovaCart",
+    tagline: "An online store built to convert on every screen",
+    category: "E-commerce",
+    year: "2026",
+    role: "Sole designer & developer. Store architecture, UX/UI design, custom e-commerce development, and checkout optimisation for the founding team.",
+    summary:
+      "NovaCart's gadgets had a fanbase \u2014 but the store leaked sales at every step. We rebuilt the shopping experience around speed, trust and a checkout that takes two taps on a phone.",
+    challenge:
+      "The previous store loaded slowly, buried products behind confusing navigation, and lost 7 in 10 mobile shoppers before checkout. The founders needed the site to work like a full-time salesperson.",
+    process: [
+      "Discovery sprint \u2014 mapped customers, goals and the five best-selling product families",
+      "Wireframed a shop organised by use-case, not just category, with comparison built in",
+      "Art-directed product imagery and built a crisp, high-contrast visual system",
+      "Custom storefront with modular sections, speed optimisation and a 2-tap mobile checkout",
+    ],
+    results: [
+      { metric: "+51%", label: "online sales in 3 months" },
+      { metric: "-38%", label: "checkout abandonment" },
+      { metric: "1.2s", label: "mobile load time" },
+    ],
+    quote:
+      "Fahmid didn't just redesign the store \u2014 he understood the business behind it. Online orders now outpace every channel we've ever tried.",
+    quoteBy: "Tanvir Ahmed, Co-founder of NovaCart",
+    className: "art-novacart",
+    monogram: "NC",
+  },
+  {
+    id: "brightpath",
+    title: "BrightPath Academy",
+    tagline: "A coaching center site that turns enquiries into enrolments",
+    category: "Coaching Center",
     year: "2025",
-    role: "UX/UI design and frontend development. The client's small dev team built the backend booking engine — I designed and built everything the customer sees, and handed off a documented component library.",
+    role: "Solo project: content structure, visual design, custom build, and an admissions enquiry system. Worked directly with the academic director.",
     summary:
-      "A strength coach with a growing following needed one place to sell programs, take bookings, and prove his method works.",
+      "BrightPath's tutors got results parents raved about \u2014 but the website couldn't explain a single course. We built an enrolment engine that answers every parent question before they call.",
     challenge:
-      "Bookings lived in DMs, programs were sold through spreadsheets, and the brand looked inconsistent across five different tools. The coach needed a system, not just a site.",
+      "Parents landed on a cluttered page with no class times, no fees and no way to enquire outside office hours. The center was losing admissions to competitors with clearer sites.",
     process: [
-      "Mapped the client journey from first scroll → booked intro call",
-      "Designed a bold, high-energy interface that matches the coach's style",
-      "Built the marketing frontend and a reusable component library in React",
-      "Integrated the team's booking engine and automated the follow-up emails",
+      "Interviewed parents and tutors \u2014 mapped the real enrolment questions, in order",
+      "Designed a course-first structure: programmes, schedules, fees and tutor credentials at a glance",
+      "Custom build with an admissions enquiry form, success-story wall and a class-timetable view",
+      "Local SEO for tuition and coaching searches, plus structured data for courses",
     ],
     results: [
-      { metric: "+120%", label: "consultation bookings" },
-      { metric: "8 hrs", label: "admin saved weekly" },
-      { metric: "94%", label: "mobile satisfaction" },
+      { metric: "+83%", label: "enrolment enquiries" },
+      { metric: "3\u00d7", label: "demo-class bookings" },
+      { metric: "#1", label: "local search ranking" },
     ],
     quote:
-      "The site sells my coaching while I'm on the gym floor. Best investment I've made in the business.",
-    quoteBy: "Danny Okafor, Head Coach at PeakForm",
-    className: "art-peak",
-    monogram: "PF",
-  },
-  {
-    id: "nimbus",
-    title: "Nimbus Ledger",
-    tagline: "A fintech landing page that made a complex product feel simple",
-    category: "Tech & SaaS",
-    year: "2026",
-    role: "Landing page design and build for a small SaaS team. I also contributed to their design system; the dashboard UI itself was designed by their in-house designer — full credit there.",
-    summary:
-      "A young fintech startup with a powerful invoicing tool — and a landing page nobody understood. We rebuilt the story around one question: what does this do for my business?",
-    challenge:
-      "The original page led with features instead of outcomes. Bounce rates were high, and trial signups from paid ads weren't paying back.",
-    process: [
-      "Interviewed 6 real users to find the words they actually use for their pain",
-      "Rewrote the narrative: outcome-first headline, proof-driven sections, honest pricing",
-      "Designed and built the page with scroll-triggered product demos and clean diagrams",
-      "A/B tested hero variants — the winner lifted trials by 31%",
-    ],
-    results: [
-      { metric: "+31%", label: "trial signups" },
-      { metric: "-22%", label: "bounce rate" },
-      { metric: "2×", label: "ad conversion" },
-    ],
-    quote:
-      "Fahmid asked better questions than our whole team did. The page finally sounds like us — and sells like we hoped.",
-    quoteBy: "Priya Menon, Co-founder of Nimbus Ledger",
-    className: "art-nimbus",
-    monogram: "NL",
-  },
-  {
-    id: "wanderlight",
-    title: "Wanderlight Travel",
-    tagline: "A boutique travel agency site that inspires the trip first",
-    category: "Travel & Lifestyle",
-    year: "2024",
-    role: "Solo freelancer on this one: strategy, content structure, visual design, custom development, and SEO setup — direct with the agency owners.",
-    summary:
-      "A small tour operator with incredible itineraries and a website that looked like a 2010 brochure. We turned it into a destination-discovery experience.",
-    challenge:
-      "Travel is an emotional purchase. The old site led with prices and forms — it never made anyone *feel* the journey, and it ranked for nothing beyond the brand name.",
-    process: [
-      "Photographed-feel art direction using their real trip photography",
-      "Designed destination-first pages that tell each trip as a story",
-      "Built a custom theme the owners can update without touching code",
-      "SEO foundations: destination guides, structured data, and internal linking",
-    ],
-    results: [
-      { metric: "+58%", label: "enquiry form fills" },
-      { metric: "3.2×", label: "organic traffic in 8 months" },
-      { metric: "0", label: "developer calls needed" },
-    ],
-    quote:
-      "Our clients tell us they booked because of the website. That never happened before Fahmid.",
-    quoteBy: "Ayesha & Tanvir, Owners of Wanderlight Travel",
-    className: "art-wander",
-    monogram: "WT",
-  },
-  {
-    id: "kintsugi",
-    title: "Kintsugi Ceramics",
-    tagline: "An artisan pottery shop where every piece tells its story",
-    category: "Craft & Retail",
-    year: "2026",
-    role: "Solo project for a one-woman studio: brand identity, art direction, custom store design and build, plus product storytelling templates she can reuse herself.",
-    summary:
-      "A ceramicist selling at craft fairs wanted an online home that felt handmade — not like a generic template shop.",
-    challenge:
-      "Handmade goods lose their soul in standard product grids. The challenge: honour the wabi-sabi aesthetic while still making it effortless to browse and buy.",
-    process: [
-      "Brand identity rooted in the Japanese art of golden repair",
-      "Product pages designed like gallery placards — story, process, and maker's notes",
-      "Custom store build with flexible templates and a firing-process journal section",
-      "Taught the maker how to photograph and upload new pieces in her own style",
-    ],
-    results: [
-      { metric: "+87%", label: "average order value" },
-      { metric: "3 days", label: "to sell out first drop" },
-      { metric: "100%", label: "client self-sufficiency" },
-    ],
-    quote:
-      "People read my pots' stories before buying. The site feels like my studio finally has a front door.",
-    quoteBy: "Hana Yamamoto, Maker at Kintsugi Ceramics",
-    className: "art-kintsugi",
-    monogram: "KC",
+      "Parents tell us the website answered everything before they even called. Enrolments tripled this term \u2014 the site finally works as hard as our tutors.",
+    quoteBy: "Dr. Amina Rahman, Director of BrightPath Academy",
+    className: "art-brightpath",
+    monogram: "BP",
   },
 ];
 
@@ -657,3 +633,225 @@ function buildModalHTML(p) {
     </div>
   `;
 }
+
+
+/* ==================================================================
+ * 14. MOTION LAYER — cursor follower, card tilt, parallax,
+ *     back-to-top, header hide-on-scroll
+ * ================================================================= */
+(function motionLayer() {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(pointer: fine)").matches;
+
+  /* Cursor follower */
+  const dot = document.getElementById("cursorDot");
+  const ring = document.getElementById("cursorRing");
+  if (dot && ring && fine && !reduced) {
+    let mx = -100, my = -100, rx = -100, ry = -100, active = false;
+    document.addEventListener("mousemove", (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!active) {
+        document.body.classList.add("cursor-on");
+        active = true;
+      }
+      dot.style.transform = `translate(${mx}px, ${my}px)`;
+    });
+    const loop = () => {
+      rx += (mx - rx) * 0.16;
+      ry += (my - ry) * 0.16;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(loop);
+    };
+    loop();
+    document
+      .querySelectorAll("a, button, summary, .project-card, input, textarea, select, .skill, .testimonial")
+      .forEach((el) => {
+        el.addEventListener("mouseenter", () => ring.classList.add("grow"));
+        el.addEventListener("mouseleave", () => ring.classList.remove("grow"));
+      });
+  }
+
+  /* 3D tilt on project cards */
+  if (fine && !reduced) {
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transition = "transform 0.18s ease-out";
+        card.style.transform =
+          `perspective(900px) rotateX(${(-py * 8).toFixed(2)}deg) ` +
+          `rotateY(${(px * 10).toFixed(2)}deg) translateY(-8px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transition = "transform 0.6s ease-out";
+        card.style.transform = "";
+      });
+    });
+  }
+
+  /* Back to top */
+  const toTop = document.getElementById("toTop");
+  if (toTop) {
+    const toggle = () => toTop.classList.toggle("show", window.scrollY > 700);
+    window.addEventListener("scroll", toggle, { passive: true });
+    toggle();
+    toTop.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" })
+    );
+  }
+
+  /* Header hides scrolling down, returns scrolling up */
+  const header = document.getElementById("siteHeader");
+  if (header) {
+    let lastY = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        if (y > 150 && y > lastY + 4) header.classList.add("header-hidden");
+        else if (y < lastY - 4 || y <= 150) header.classList.remove("header-hidden");
+        lastY = y;
+      },
+      { passive: true }
+    );
+  }
+
+  /* Parallax via the `translate` property — never fights transform animations */
+  const parEls = document.querySelectorAll("[data-parallax]");
+  if (parEls.length && !reduced) {
+    let ticking = false;
+    const apply = () => {
+      parEls.forEach((el) => {
+        const speed = parseFloat(el.dataset.parallax) || 0.05;
+        const rect = el.getBoundingClientRect();
+        const offset =
+          (rect.top + rect.height / 2 - window.innerHeight / 2) * -speed;
+        el.style.setProperty("--par-y", `${offset.toFixed(1)}px`);
+      });
+      ticking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(apply);
+        }
+      },
+      { passive: true }
+    );
+    apply();
+  }
+})();
+
+
+/* ==================================================================
+ * 15. MOTION WAVE 2 — intro cleanup, split-text titles,
+ *     cursor spotlight, confetti bursts
+ * ================================================================= */
+(function motionWave2() {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Intro: skip on click + remove after it lifts */
+  const intro = document.getElementById("intro");
+  if (intro) {
+    intro.addEventListener("click", () => intro.remove());
+    setTimeout(() => intro.remove(), 2400);
+  }
+
+  /* Split section titles into rising words */
+  document.querySelectorAll(".section-title").forEach((title) => {
+    const parts = Array.from(title.childNodes);
+    title.textContent = "";
+    let idx = 0;
+    const addWord = (content, tag) => {
+      const wrap = document.createElement("span");
+      wrap.className = "w";
+      const inner = document.createElement("i");
+      inner.style.setProperty("--d", (idx * 0.07).toFixed(2) + "s");
+      if (tag) {
+        const el = document.createElement(tag);
+        el.textContent = content;
+        inner.appendChild(el);
+      } else {
+        inner.textContent = content;
+      }
+      wrap.appendChild(inner);
+      title.appendChild(wrap);
+      title.appendChild(document.createTextNode(" "));
+      idx += 1;
+    };
+    parts.forEach((n) => {
+      if (n.nodeType === Node.TEXT_NODE) {
+        n.textContent
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .forEach((t) => addWord(t));
+      } else if (n.nodeName === "BR") {
+        title.appendChild(n);
+      } else {
+        addWord(n.textContent, n.nodeName.toLowerCase());
+      }
+    });
+  });
+
+  /* Cursor spotlight on dark surfaces */
+  if (!reduced) {
+    document.querySelectorAll(".hero, #contact").forEach((zone) => {
+      zone.addEventListener("mousemove", (e) => {
+        const r = zone.getBoundingClientRect();
+        zone.style.setProperty("--mx", e.clientX - r.left + "px");
+        zone.style.setProperty("--my", e.clientY - r.top + "px");
+      });
+    });
+  }
+
+  /* Confetti bursts — hero name + copy button */
+  const burst = (x, y) => {
+    if (reduced) return;
+    const colors = ["#ff4d2e", "#c8ff3d", "#2e4cff", "#f4f1ea", "#141419"];
+    for (let i = 0; i < 26; i += 1) {
+      const bit = document.createElement("div");
+      bit.className = "confetti-bit";
+      const size = 6 + Math.random() * 8;
+      bit.style.cssText =
+        `left:${x}px;top:${y}px;background:${colors[i % colors.length]};` +
+        `width:${size}px;height:${size * (0.5 + Math.random())}px;`;
+      document.body.appendChild(bit);
+      const ang = Math.random() * Math.PI * 2;
+      const dist = 60 + Math.random() * 170;
+      const anim = bit.animate(
+        [
+          { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+          {
+            transform:
+              `translate(${Math.cos(ang) * dist}px,` +
+              `${Math.sin(ang) * dist + 130}px) rotate(${Math.random() * 680 - 340}deg)`,
+            opacity: 0,
+          },
+        ],
+        {
+          duration: 850 + Math.random() * 650,
+          easing: "cubic-bezier(.2,.65,.3,1)",
+        }
+      );
+      anim.onfinish = () => bit.remove();
+    }
+  };
+  const heroName = document.querySelector(".hero-name");
+  if (heroName) {
+    heroName.style.cursor = "pointer";
+    heroName.title = "Click me";
+    heroName.addEventListener("click", (e) => burst(e.clientX, e.clientY));
+  }
+  const copyBtn = document.querySelector(".copy-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      const r = copyBtn.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + r.height / 2);
+    });
+  }
+})();
