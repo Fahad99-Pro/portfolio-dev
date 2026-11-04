@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fahad99-pro.github.io/portfolio-dev/sitemap.xml
+Sitemap: https://fahmid.is-a.dev/sitemap.xml
