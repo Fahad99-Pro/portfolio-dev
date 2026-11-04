@@ -457,27 +457,6 @@ ul {
   margin-bottom: 24px;
 }
 
-.hero h1 .serif {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-
-.hero h1 .accent {
-  color: var(--coral);
-  position: relative;
-  display: inline-block;
-}
-
-.hero h1 .accent svg {
-  position: absolute;
-  left: 0;
-  bottom: -0.18em;
-  width: 100%;
-  height: 0.22em;
-  overflow: visible;
-}
 
 .hero-sub {
   font-size: clamp(1.02rem, 1.6vw, 1.22rem);
@@ -1386,29 +1365,8 @@ ul {
   color: var(--lime);
 }
 
-.socials {
-  display: flex;
-  gap: 12px;
-  margin-top: 26px;
-  flex-wrap: wrap;
-}
 
-.socials a {
-  padding: 10px 18px;
-  border: 1px solid var(--line-dark);
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: rgba(244, 241, 234, 0.8);
-  transition: all 0.3s;
-}
 
-.socials a:hover {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
-  transform: translateY(-3px);
-}
 
 .contact-form {
   background: rgba(244, 241, 234, 0.05);
@@ -1657,7 +1615,7 @@ ul {
   margin-bottom: 30px;
 }
 
-.modal-section h4 {
+.modal-section h3 {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.18rem;
@@ -1668,7 +1626,7 @@ ul {
   gap: 10px;
 }
 
-.modal-section h4::before {
+.modal-section h3::before {
   content: "";
   width: 10px;
   height: 10px;
@@ -1908,11 +1866,6 @@ ul {
   color: var(--on-night);
 }
 
-.socials a:hover {
-  background: var(--on-night);
-  color: var(--night);
-  border-color: var(--on-night);
-}
 
 .spin-badge {
   color: var(--night);
@@ -2180,45 +2133,9 @@ ul {
   text-align: center;
 }
 
-.insta-float {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 14px 34px rgba(225, 48, 108, 0.45);
-  z-index: 850;
-  transition: transform 0.35s var(--ease-out), opacity 0.35s;
-}
-
-.insta-float svg {
-  width: 28px;
-  height: 28px;
-}
-
-.insta-float:hover {
-  transform: scale(1.1) translateY(-4px);
-}
-
-.insta-float.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(18px);
-}
 
 
 
-@media (max-width: 720px) {
-  .insta-float {
-    right: 16px;
-    bottom: 16px;
-  }
-}
 
 
 /* ==========================================================================
@@ -2442,15 +2359,46 @@ ul {
 }
 
 
-/* Instagram — the one real profile stands out */
-.socials a.social-real {
+
+
+/* Skip-to-content link (visible on keyboard focus) */
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 16px;
+  z-index: 2000;
   background: var(--coral);
-  border-color: var(--coral);
   color: #fff;
+  padding: 12px 20px;
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+  transition: top 0.25s var(--ease-out);
 }
 
-.socials a.social-real:hover {
-  background: #ff6242;
-  border-color: #ff6242;
-  color: #fff;
+.skip-link:focus {
+  top: 0;
+}
+
+
+
+
+
+/* Brand identity: FAHMID is the brand, the full name anchors it */
+.hero-fullname {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.7);
+  margin: -6px 0 26px;
+}
+
+@media (max-width: 560px) {
+  .hero-fullname {
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    margin: -2px 0 20px;
+  }
 }
