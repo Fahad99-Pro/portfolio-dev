@@ -153,10 +153,15 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("active");
       const filter = btn.dataset.filter;
 
-      projectCards.forEach((card) => {
+      projectCards.forEach((card, i) => {
         const match =
           filter === "all" || card.dataset.category === filter;
         card.classList.toggle("hidden", !match);
+        if (match && !prefersReducedMotion) {
+          card.style.animation = "none";
+          void card.offsetWidth;
+          card.style.animation = `filterPop 0.5s ease-out ${i * 0.06}s both`;
+        }
       });
     });
   });
@@ -753,13 +758,6 @@ function buildModalHTML(p) {
  * ================================================================= */
 (function motionWave2() {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* Intro: skip on click + remove after it lifts */
-  const intro = document.getElementById("intro");
-  if (intro) {
-    intro.addEventListener("click", () => intro.remove());
-    setTimeout(() => intro.remove(), 2400);
-  }
 
   /* Split section titles into rising words */
   document.querySelectorAll(".section-title").forEach((title) => {
