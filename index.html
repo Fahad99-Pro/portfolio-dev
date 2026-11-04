@@ -21,7 +21,6 @@
       content="Freelance web developer in Bangladesh. Custom-coded sites, stores & web apps in React, Laravel & Node.js that turn visitors into customers."
     />
     <meta property="og:url" content="https://fahmid.is-a.dev/" />
-    <meta name="google-site-verification" content="w_4Ewzn8EEcqbKloAgEK1veCIuVFMjoedfyZSjbC8Fw" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141419'/%3E%3Ctext x='14' y='46' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='900' fill='%23f4f1ea'%3EF%3C/text%3E%3Ccircle cx='50' cy='42' r='5' fill='%23ff4d2e'/%3E%3C/svg%3E"
@@ -139,10 +138,14 @@
   ]
 }
     </script>
-    <link rel="stylesheet" href="styles.css?v=2026.09.47" />
+    <link rel="stylesheet" href="styles.css?v=2026.09.51" />
   </head>
 
   <body>
+    <div class="intro" id="intro" aria-hidden="true">
+      <div class="intro-mark">FAHMID<span class="logo-dot">.</span></div>
+      <div class="intro-bar"><i></i></div>
+    </div>
     <a class="skip-link" href="#top">Skip to content</a>
 
     <!-- Scroll progress -->
@@ -249,7 +252,7 @@
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div class="hero-visual" data-parallax="0.05">
             <div class="browser-mock" aria-hidden="true">
               <div class="browser-bar">
                 <i></i><i></i><i></i>
@@ -321,6 +324,28 @@
             <span>SEO</span><span class="star">✦</span>
           </div>
         </div>
+        <div class="marquee-track rev" aria-hidden="true">
+          <div class="marquee-group">
+            <span>React</span><span class="star">✦</span>
+            <span>Tailwind CSS</span><span class="star">✦</span>
+            <span>Node.js</span><span class="star">✦</span>
+            <span>Laravel</span><span class="star">✦</span>
+            <span>MySQL</span><span class="star">✦</span>
+            <span>Supabase</span><span class="star">✦</span>
+            <span>Firebase</span><span class="star">✦</span>
+            <span>Full-Stack</span><span class="star">✦</span>
+          </div>
+          <div class="marquee-group">
+            <span>React</span><span class="star">✦</span>
+            <span>Tailwind CSS</span><span class="star">✦</span>
+            <span>Node.js</span><span class="star">✦</span>
+            <span>Laravel</span><span class="star">✦</span>
+            <span>MySQL</span><span class="star">✦</span>
+            <span>Supabase</span><span class="star">✦</span>
+            <span>Firebase</span><span class="star">✦</span>
+            <span>Full-Stack</span><span class="star">✦</span>
+          </div>
+        </div>
       </div>
 
       <!-- ================= SOCIAL PROOF =================
@@ -328,12 +353,11 @@
       <section class="proof" aria-label="Clients">
         <p class="proof-label">Brands featured in these case studies</p>
         <div class="logo-row">
-          <div class="client-logo"><span class="mark">V</span> Verdant Roots</div>
-          <div class="client-logo"><span class="mark">C</span> Café Lumière</div>
-          <div class="client-logo"><span class="mark">P</span> PeakForm</div>
-          <div class="client-logo"><span class="mark">N</span> Nimbus Ledger</div>
-          <div class="client-logo"><span class="mark">W</span> Wanderlight</div>
-          <div class="client-logo"><span class="mark">K</span> Kintsugi</div>
+          <div class="client-logo"><span class="mark">IP</span> Iron Pulse Gym</div>
+          <div class="client-logo"><span class="mark">ST</span> The Saffron Table</div>
+          <div class="client-logo"><span class="mark">CB</span> Coral Bay Resort</div>
+          <div class="client-logo"><span class="mark">NC</span> NovaCart</div>
+          <div class="client-logo"><span class="mark">BP</span> BrightPath Academy</div>
         </div>
       </section>
 
@@ -342,9 +366,11 @@
       <section class="section statement" id="statement">
         <div class="container statement-grid">
           <h2 class="statement-line reveal">
-            Websites that turn <em>visitors</em> into
+            <span class="kw">Websites</span> <span class="kw">that</span>
+            <span class="kw">turn</span> <em class="kw">visitors</em>
+            <span class="kw">into</span>
             <span class="accent"
-              >customers.
+              ><span class="kw">customers.</span>
               <svg width="300" height="12" viewBox="0 0 300 12" fill="none" aria-hidden="true">
                 <path
                   d="M2 8 C 50 2, 90 12, 140 6 S 250 2, 298 7"
@@ -382,7 +408,7 @@
                 Real projects.<br /><em>Real</em> business results.
               </h2>
               <p class="section-lead">
-                Six concept case studies across different industries — every
+                Five concept case studies across different industries — every
                 one shows the process behind the result, and exactly what I did.
                 Filter by lane, or dive straight in.
               </p>
@@ -391,30 +417,118 @@
 
           <div class="filters reveal" role="group" aria-label="Filter projects">
             <button class="filter-btn active" data-filter="all">All work</button>
+            <button class="filter-btn" data-filter="fitness">Gym &amp; Fitness</button>
+            <button class="filter-btn" data-filter="restaurant">Restaurant</button>
+            <button class="filter-btn" data-filter="hotel">Hotel</button>
             <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-            <button class="filter-btn" data-filter="hospitality">Hospitality</button>
-            <button class="filter-btn" data-filter="health">Health &amp; Fitness</button>
-            <button class="filter-btn" data-filter="tech">Tech &amp; SaaS</button>
-            <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+            <button class="filter-btn" data-filter="coaching">Coaching Center</button>
           </div>
 
           <div class="work-grid">
-            <!-- Verdant Roots -->
+
+            <!-- Iron Pulse Gym -->
             <article
               class="project-card reveal"
-              data-project="verdant"
+              data-project="ironpulse"
+              data-category="fitness"
+              tabindex="0"
+              role="button"
+              aria-label="Open case study: Iron Pulse Gym"
+            >
+              <div class="project-art art-ironpulse">
+                <span class="art-monogram">IP · Gym Site</span>
+                <span class="art-tag">Gym &amp; Fitness</span>
+                <div class="art-device">
+                  <div class="ad-bar"></div>
+                  <div class="ad-hero" style="background: linear-gradient(120deg, #7f1d1d, #ef4444)">
+                    Iron Pulse Gym
+                  </div>
+                  <div class="ad-lines"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div>
+                  <span class="concept-badge">Concept project</span>
+                  <h3>Iron Pulse Gym</h3>
+                  <p>A gym site that turns trial visits into loyal members.</p>
+                </div>
+                <span class="project-link">Case study →</span>
+              </div>
+            </article>
+            <!-- The Saffron Table -->
+            <article
+              class="project-card reveal reveal-delay-1"
+              data-project="saffron"
+              data-category="restaurant"
+              tabindex="0"
+              role="button"
+              aria-label="Open case study: The Saffron Table"
+            >
+              <div class="project-art art-saffron">
+                <span class="art-monogram">ST · Restaurant Site</span>
+                <span class="art-tag">Restaurant</span>
+                <div class="art-device">
+                  <div class="ad-bar"></div>
+                  <div class="ad-hero" style="background: linear-gradient(120deg, #7c2d12, #f59e0b)">
+                    The Saffron Table
+                  </div>
+                  <div class="ad-lines"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div>
+                  <span class="concept-badge">Concept project</span>
+                  <h3>The Saffron Table</h3>
+                  <p>A restaurant brand and reservations site that fills tables.</p>
+                </div>
+                <span class="project-link">Case study →</span>
+              </div>
+            </article>
+            <!-- Coral Bay Resort -->
+            <article
+              class="project-card reveal reveal-delay-2"
+              data-project="coralbay"
+              data-category="hotel"
+              tabindex="0"
+              role="button"
+              aria-label="Open case study: Coral Bay Resort"
+            >
+              <div class="project-art art-coralbay">
+                <span class="art-monogram">CB · Hotel Site</span>
+                <span class="art-tag">Hotel</span>
+                <div class="art-device">
+                  <div class="ad-bar"></div>
+                  <div class="ad-hero" style="background: linear-gradient(120deg, #0c4a6e, #38bdf8)">
+                    Coral Bay Resort
+                  </div>
+                  <div class="ad-lines"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="project-info">
+                <div>
+                  <span class="concept-badge">Concept project</span>
+                  <h3>Coral Bay Resort</h3>
+                  <p>A resort site that lifts direct bookings and fills suites.</p>
+                </div>
+                <span class="project-link">Case study →</span>
+              </div>
+            </article>
+            <!-- NovaCart -->
+            <article
+              class="project-card reveal"
+              data-project="novacart"
               data-category="ecommerce"
               tabindex="0"
               role="button"
-              aria-label="Open case study: Verdant Roots"
+              aria-label="Open case study: NovaCart"
             >
-              <div class="project-art art-verdant">
-                <span class="art-monogram">VR · Custom Store</span>
+              <div class="project-art art-novacart">
+                <span class="art-monogram">NC · Online Store</span>
                 <span class="art-tag">E-commerce</span>
                 <div class="art-device">
                   <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #14532d, #4ade80)">
-                    Verdant Roots
+                  <div class="ad-hero" style="background: linear-gradient(120deg, #064e3b, #10b981)">
+                    NovaCart
                   </div>
                   <div class="ad-lines"><i></i><i></i><i></i></div>
                 </div>
@@ -422,29 +536,28 @@
               <div class="project-info">
                 <div>
                   <span class="concept-badge">Concept project</span>
-                  <h3>Verdant Roots</h3>
-                  <p>An organic plant shop that grew 42% in online sales.</p>
+                  <h3>NovaCart</h3>
+                  <p>An online store built to convert on every screen.</p>
                 </div>
                 <span class="project-link">Case study →</span>
               </div>
             </article>
-
-            <!-- Café Lumière -->
+            <!-- BrightPath Academy -->
             <article
               class="project-card reveal reveal-delay-1"
-              data-project="cafe"
-              data-category="hospitality"
+              data-project="brightpath"
+              data-category="coaching"
               tabindex="0"
               role="button"
-              aria-label="Open case study: Café Lumière"
+              aria-label="Open case study: BrightPath Academy"
             >
-              <div class="project-art art-cafe">
-                <span class="art-monogram">CL · Business Site</span>
-                <span class="art-tag">Hospitality</span>
+              <div class="project-art art-brightpath">
+                <span class="art-monogram">BP · Coaching Site</span>
+                <span class="art-tag">Coaching Center</span>
                 <div class="art-device">
                   <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #7c2d12, #fbbf24)">
-                    Café Lumière
+                  <div class="ad-hero" style="background: linear-gradient(120deg, #1e3a8a, #818cf8)">
+                    BrightPath Academy
                   </div>
                   <div class="ad-lines"><i></i><i></i><i></i></div>
                 </div>
@@ -452,139 +565,15 @@
               <div class="project-info">
                 <div>
                   <span class="concept-badge">Concept project</span>
-                  <h3>Café Lumière</h3>
-                  <p>A cosy bistro brand and reservations site that fills tables.</p>
+                  <h3>BrightPath Academy</h3>
+                  <p>A coaching center site that turns enquiries into enrolments.</p>
                 </div>
                 <span class="project-link">Case study →</span>
               </div>
             </article>
 
-            <!-- PeakForm -->
-            <article
-              class="project-card reveal reveal-delay-2"
-              data-project="peakform"
-              data-category="health"
-              tabindex="0"
-              role="button"
-              aria-label="Open case study: PeakForm Studio"
-            >
-              <div class="project-art art-peak">
-                <span class="art-monogram">PF · React</span>
-                <span class="art-tag">Health &amp; Fitness</span>
-                <div class="art-device">
-                  <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #4c1d95, #f97316)">
-                    PeakForm
-                  </div>
-                  <div class="ad-lines"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="project-info">
-                <div>
-                  <span class="concept-badge">Concept project</span>
-                  <h3>PeakForm Studio</h3>
-                  <p>A coaching platform that books clients while the coach sleeps.</p>
-                </div>
-                <span class="project-link">Case study →</span>
-              </div>
-            </article>
-
-            <!-- Nimbus Ledger -->
-            <article
-              class="project-card reveal"
-              data-project="nimbus"
-              data-category="tech"
-              tabindex="0"
-              role="button"
-              aria-label="Open case study: Nimbus Ledger"
-            >
-              <div class="project-art art-nimbus">
-                <span class="art-monogram">NL · SaaS</span>
-                <span class="art-tag">Tech &amp; SaaS</span>
-                <div class="art-device">
-                  <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #0c4a6e, #67e8f9)">
-                    Nimbus Ledger
-                  </div>
-                  <div class="ad-lines"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="project-info">
-                <div>
-                  <span class="concept-badge">Concept project</span>
-                  <h3>Nimbus Ledger</h3>
-                  <p>A fintech landing page that made a complex product feel simple.</p>
-                </div>
-                <span class="project-link">Case study →</span>
-              </div>
-            </article>
-
-            <!-- Wanderlight -->
-            <article
-              class="project-card reveal reveal-delay-1"
-              data-project="wanderlight"
-              data-category="lifestyle"
-              tabindex="0"
-              role="button"
-              aria-label="Open case study: Wanderlight Travel"
-            >
-              <div class="project-art art-wander">
-                <span class="art-monogram">WT · Custom Site</span>
-                <span class="art-tag">Travel</span>
-                <div class="art-device">
-                  <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #134e4a, #f59e0b)">
-                    Wanderlight
-                  </div>
-                  <div class="ad-lines"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="project-info">
-                <div>
-                  <span class="concept-badge">Concept project</span>
-                  <h3>Wanderlight Travel</h3>
-                  <p>A boutique travel agency site that inspires the trip first.</p>
-                </div>
-                <span class="project-link">Case study →</span>
-              </div>
-            </article>
-
-            <!-- Kintsugi -->
-            <article
-              class="project-card reveal reveal-delay-2"
-              data-project="kintsugi"
-              data-category="ecommerce"
-              tabindex="0"
-              role="button"
-              aria-label="Open case study: Kintsugi Ceramics"
-            >
-              <div class="project-art art-kintsugi">
-                <span class="art-monogram">KC · Custom Store</span>
-                <span class="art-tag">Craft &amp; Retail</span>
-                <div class="art-device">
-                  <div class="ad-bar"></div>
-                  <div class="ad-hero" style="background: linear-gradient(120deg, #78350f, #fde68a); color: #78350f">
-                    Kintsugi
-                  </div>
-                  <div class="ad-lines"><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="project-info">
-                <div>
-                  <span class="concept-badge">Concept project</span>
-                  <h3>Kintsugi Ceramics</h3>
-                  <p>An artisan pottery shop where every piece tells its story.</p>
-                </div>
-                <span class="project-link">Case study →</span>
-              </div>
-            </article>
           </div>
 
-          <p class="work-footnote reveal">
-            ✦ Every project above is a <strong>concept project</strong> —
-            clearly labelled — built to show exactly how I work. Real client
-            case studies slot straight into this grid whenever you're ready.
-          </p>
         </div>
       </section>
 
@@ -669,7 +658,7 @@
             </h2>
             <p class="about-bio">
               For 3+ years I've helped <strong>small businesses and startups</strong>
-              across retail, hospitality, health, tech and craft look like the
+              across fitness, hospitality, retail and education look like the
               best in their industry online — without the big-agency price tag.
             </p>
             <p class="about-bio">
@@ -734,18 +723,17 @@
           </div>
 
           <div class="testimonial-grid">
+
             <div class="testimonial reveal">
               <div class="quote-mark">“</div>
               <blockquote>
-                Fahmid didn't just redesign the site — he understood my little
-                nursery. My online orders now outpace my market stall. Worth
-                every taka.
+                The site does what my best trainers do — it sells the first session. Trial bookings doubled and I didn't touch a thing. Worth every taka.
               </blockquote>
               <div class="testimonial-person">
-                <div class="avatar av-1">NJ</div>
+                <div class="avatar av-1">RM</div>
                 <div>
-                  <b>Nusrat Jahan</b>
-                  <span>Founder, Verdant Roots</span>
+                  <b>Ryan Mercer</b>
+                  <span>Owner, Iron Pulse Gym</span>
                 </div>
               </div>
             </div>
@@ -753,15 +741,13 @@
             <div class="testimonial reveal reveal-delay-1">
               <div class="quote-mark">“</div>
               <blockquote>
-                Guests now quote our website when they walk in. Fahmid made us
-                look like the place we always wanted to be — and the bookings
-                prove it.
+                Guests now book tables at midnight straight from the site. Fahmid captured the warmth of our dining room perfectly — and weeknights are full again.
               </blockquote>
               <div class="testimonial-person">
-                <div class="avatar av-2">MD</div>
+                <div class="avatar av-2">PS</div>
                 <div>
-                  <b>Marc Delacroix</b>
-                  <span>Owner, Café Lumière</span>
+                  <b>Priya Sharma</b>
+                  <span>Owner, The Saffron Table</span>
                 </div>
               </div>
             </div>
@@ -769,18 +755,18 @@
             <div class="testimonial reveal reveal-delay-2">
               <div class="quote-mark">“</div>
               <blockquote>
-                The site sells my coaching while I'm on the gym floor. Clear
-                process, zero stress, and he delivered exactly when he said he
-                would.
+                Parents tell us the website answered everything before they even called. Enrolments tripled this term — the site finally works as hard as our tutors.
               </blockquote>
               <div class="testimonial-person">
-                <div class="avatar av-3">DO</div>
+                <div class="avatar av-3">AR</div>
                 <div>
-                  <b>Danny Okafor</b>
-                  <span>Head Coach, PeakForm Studio</span>
+                  <b>Dr. Amina Rahman</b>
+                  <span>Director, BrightPath Academy</span>
                 </div>
               </div>
             </div>
+
+
           </div>
         </div>
       </section>
@@ -1032,6 +1018,11 @@
           <span class="domain">Available for freelance work ✦</span>
         </div>
       </div>
+      <div class="footer-marquee" aria-hidden="true">
+        <div class="footer-track">
+          <span>FAHMID.</span><span>FAHMID.</span><span>FAHMID.</span><span>FAHMID.</span><span>FAHMID.</span><span>FAHMID.</span>
+        </div>
+      </div>
     </footer>
 
     <!-- ================= CASE-STUDY MODAL ================= -->
@@ -1050,6 +1041,9 @@
       </div>
     </div>
 
-    <script src="script.js?v=2026.09.47" defer></script>
-  </body>
+    <script src="script.js?v=2026.09.51" defer></script>
+    <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a554e6534c8f3e7d',t:'MTc5MzgwODc0MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a554e6534c8f3e7d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
