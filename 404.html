@@ -7,22 +7,94 @@
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#141419" />
     <meta name="color-scheme" content="light" />
-    <link rel="stylesheet" href="styles.css?v=2026.09.46" />
+    <link rel="stylesheet" href="styles.css?v=2026.09.52" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141419'/%3E%3Ctext x='14' y='46' font-family='Arial,Helvetica,sans-serif' font-size='40' font-weight='900' fill='%23f4f1ea'%3EF%3C/text%3E%3Ccircle cx='50' cy='42' r='5' fill='%23ff4d2e'/%3E%3C/svg%3E"
     />
+    <style>
+      .lost-wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .lost-code {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(5rem, 22vw, 11rem);
+        letter-spacing: -0.05em;
+        line-height: 1;
+        color: var(--ink);
+        animation: heroUp 0.8s var(--ease-out) both;
+      }
+      .lost-code em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .lost-title {
+        margin: 14px 0 8px;
+        font-family: var(--font-display);
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        animation: heroUp 0.8s var(--ease-out) both 0.15s;
+      }
+      .lost-text {
+        max-width: 440px;
+        margin: 0 auto 30px;
+        color: #5b5b62;
+        line-height: 1.75;
+        animation: heroUp 0.8s var(--ease-out) both 0.3s;
+      }
+      .lost-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: heroUp 0.8s var(--ease-out) both 0.45s;
+      }
+      .lost-blob {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.5;
+        pointer-events: none;
+        animation: blob-drift 14s ease-in-out infinite alternate,
+          blobMorph 9s ease-in-out infinite;
+      }
+      .lost-blob.a {
+        background: rgba(255, 77, 46, 0.16);
+        top: -120px;
+        right: -100px;
+      }
+      .lost-blob.b {
+        background: rgba(200, 255, 61, 0.2);
+        bottom: -140px;
+        left: -110px;
+      }
+    </style>
   </head>
   <body>
-    <main class="container" style="min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px">
+    <main class="lost-wrap">
+      <div class="lost-blob a" aria-hidden="true"></div>
+      <div class="lost-blob b" aria-hidden="true"></div>
       <div>
-        <p class="eyebrow">Error 404</p>
-        <h1 class="hero-name" style="color: var(--ink)">FAHMID<span class="logo-dot">.</span></h1>
-        <p style="max-width: 440px; margin: 0 auto 30px; color: #5b5b62; line-height: 1.7">
-          This page wandered off the internet. No worries — the best of the work
-          is one click away.
+        <div class="lost-code">4<em>0</em>4</div>
+        <h1 class="lost-title">This page wandered off.</h1>
+        <p class="lost-text">
+          The link is broken or the page moved on — but the best of the work is
+          one click away.
         </p>
-        <a class="btn btn-coral" href="./">Back to home <span class="btn-arrow">→</span></a>
+        <div class="lost-actions">
+          <a class="btn btn-coral" href="./">Back to home <span class="btn-arrow">→</span></a>
+          <a class="btn btn-ink" href="./#work">See the work <span class="btn-arrow">→</span></a>
+        </div>
       </div>
     </main>
   </body>
