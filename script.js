@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalClose = document.getElementById("modalClose");
   let lastFocusedEl = null;
 
-  const openModal = (projectId) => {
+  const openModal = (projectId, updateHash = true) => {
     const project = PROJECTS.find((p) => p.id === projectId);
     if (!project || !modalOverlay || !modalContent) return;
 
@@ -175,14 +175,41 @@ document.addEventListener("DOMContentLoaded", () => {
     modalOverlay.classList.add("open");
     document.body.style.overflow = "hidden";
     if (modalClose) modalClose.focus();
+
+    /* Shareable deep link: #project/<id> */
+    if (updateHash && location.hash !== "#project/" + projectId) {
+      history.pushState(null, "", "#project/" + projectId);
+    }
   };
 
   const closeModal = () => {
-    if (!modalOverlay) return;
+    if (!modalOverlay || !modalOverlay.classList.contains("open")) return;
     modalOverlay.classList.remove("open");
     document.body.style.overflow = "";
     if (lastFocusedEl) lastFocusedEl.focus();
+    if (location.hash.startsWith("#project/")) {
+      history.replaceState(null, "", location.pathname + location.search);
+    }
   };
+
+  /* Delegated close links inside the modal (no inline JS) */
+  if (modalContent) {
+    modalContent.addEventListener("click", (e) => {
+      if (e.target.closest(".js-close-modal")) closeModal();
+    });
+  }
+
+  /* Deep links: open on load + respond to back/forward or manual URL edits */
+  window.addEventListener("hashchange", () => {
+    const match = location.hash.match(/^#project\/([\w-]+)$/);
+    if (match) {
+      if (!modalOverlay.classList.contains("open")) openModal(match[1], false);
+    } else {
+      closeModal();
+    }
+  });
+  const initialMatch = location.hash.match(/^#project\/([\w-]+)$/);
+  if (initialMatch) openModal(initialMatch[1], false);
 
   projectCards.forEach((card) => {
     card.addEventListener("click", () => openModal(card.dataset.project));
@@ -206,6 +233,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape") {
       closeModal();
       closeMobileNav();
+      return;
+    }
+    if (
+      e.key === "Tab" &&
+      modalOverlay &&
+      modalOverlay.classList.contains("open")
+    ) {
+      const focusables = modalOverlay.querySelectorAll(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
@@ -303,18 +350,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ------------------------------------------------------------------
-   * 12. Hide Instagram float while the contact section is on screen
-   * ---------------------------------------------------------------- */
-  const instaFloat = document.getElementById("instaFloat");
-  const contactSection = document.getElementById("contact");
-  if (instaFloat && contactSection && "IntersectionObserver" in window) {
-    new IntersectionObserver(
-      ([entry]) => instaFloat.classList.toggle("hidden", entry.isIntersecting),
-      { threshold: 0.15 }
-    ).observe(contactSection);
-  }
-
-  /* ------------------------------------------------------------------
    * 13. Dynamic "available" month label (auto-updates over time)
    * ---------------------------------------------------------------- */
   const availDate = document.getElementById("availDate");
@@ -330,6 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
  * CASE-STUDY DATA
  * Replace names, metrics and stories with your real work.
  * ================================================================= */
+// Case-study data. Optional: add video: "https://youtu.be/…" (or a Loom URL)
+// to any project and a "Watch the walkthrough" button appears in its case study.
 const PROJECTS = [
   {
     id: "verdant",
@@ -337,7 +374,7 @@ const PROJECTS = [
     tagline: "An organic plant shop that grew 42% in online sales",
     category: "E-commerce",
     year: "2026",
-    role: "Sole designer & developer. Brand refresh, UX/UI design, Shopify development, and product photography direction — for the founder of a small organic nursery.",
+    role: "Sole designer & developer. Brand refresh, UX/UI design, custom e-commerce development, and product photography direction — for the founder of a small organic nursery.",
     summary:
       "Verdant Roots came to me with a beautiful product and a clunky website. Together we rebuilt the store from the ground up: clearer storytelling, faster shopping, and a checkout that finally converts on mobile.",
     challenge:
@@ -346,7 +383,7 @@ const PROJECTS = [
       "Discovery workshop with the founder — mapped customers, goals and the 3 best-selling plant families",
       "Low-fidelity wireframes → a shop structure organised by plant care level, not just category",
       "Art-directed product photography and built a fresh visual system (green, earthy, editorial)",
-      "Shopify build with custom sections, speed optimisation, and a 2-tap mobile checkout",
+      "Custom storefront build with modular sections, speed optimisation, and a 2-tap mobile checkout",
     ],
     results: [
       { metric: "+42%", label: "online sales in 3 months" },
@@ -365,15 +402,15 @@ const PROJECTS = [
     tagline: "A cosy bistro brand and reservations site that fills tables",
     category: "Hospitality",
     year: "2025",
-    role: "Solo project: brand identity, full website design, Webflow build, and an online menu system. Food photography by the owner; I directed the shots.",
+    role: "Solo project: brand identity, full website design, custom build, and an online menu system. Food photography by the owner; I directed the shots.",
     summary:
-      "A neighbourhood bistro that wanted to feel as warm online as it does in person — and turn Instagram scrollers into booked tables.",
+      "A neighbourhood bistro that wanted to feel as warm online as it does in person — and turn casual browsers into booked tables.",
     challenge:
       "Café Lumière relied entirely on walk-ins and phone bookings. Their previous one-page site couldn't show the menu, the atmosphere, or take reservations during busy service.",
     process: [
       "Brand sprint: name story, warm palette, and a hand-drawn light motif",
       "Designed an appetite-first layout — big imagery, short copy, menu that's readable in seconds",
-      "Built in Webflow with embedded reservations, events calendar, and bilingual menu management",
+      "Custom-built with embedded reservations, events calendar, and bilingual menu management",
       "Added structured data + local SEO so the café shows up in 'near me' searches",
     ],
     results: [
@@ -399,7 +436,7 @@ const PROJECTS = [
     challenge:
       "Bookings lived in DMs, programs were sold through spreadsheets, and the brand looked inconsistent across five different tools. The coach needed a system, not just a site.",
     process: [
-      "Mapped the client journey from Instagram post → booked intro call",
+      "Mapped the client journey from first scroll → booked intro call",
       "Designed a bold, high-energy interface that matches the coach's style",
       "Built the marketing frontend and a reusable component library in React",
       "Integrated the team's booking engine and automated the follow-up emails",
@@ -449,7 +486,7 @@ const PROJECTS = [
     tagline: "A boutique travel agency site that inspires the trip first",
     category: "Travel & Lifestyle",
     year: "2024",
-    role: "Solo freelancer on this one: strategy, content structure, visual design, WordPress development, and SEO setup — direct with the agency owners.",
+    role: "Solo freelancer on this one: strategy, content structure, visual design, custom development, and SEO setup — direct with the agency owners.",
     summary:
       "A small tour operator with incredible itineraries and a website that looked like a 2010 brochure. We turned it into a destination-discovery experience.",
     challenge:
@@ -457,7 +494,7 @@ const PROJECTS = [
     process: [
       "Photographed-feel art direction using their real trip photography",
       "Designed destination-first pages that tell each trip as a story",
-      "Built a custom WordPress theme the owners can update without touching code",
+      "Built a custom theme the owners can update without touching code",
       "SEO foundations: destination guides, structured data, and internal linking",
     ],
     results: [
@@ -477,7 +514,7 @@ const PROJECTS = [
     tagline: "An artisan pottery shop where every piece tells its story",
     category: "Craft & Retail",
     year: "2026",
-    role: "Solo project for a one-woman studio: brand identity, art direction, Shopify store design and build, plus product storytelling templates she can reuse herself.",
+    role: "Solo project for a one-woman studio: brand identity, art direction, custom store design and build, plus product storytelling templates she can reuse herself.",
     summary:
       "A ceramicist selling at craft fairs wanted an online home that felt handmade — not like a generic template shop.",
     challenge:
@@ -485,7 +522,7 @@ const PROJECTS = [
     process: [
       "Brand identity rooted in the Japanese art of golden repair",
       "Product pages designed like gallery placards — story, process, and maker's notes",
-      "Shopify build with custom templates and a firing-process journal section",
+      "Custom store build with flexible templates and a firing-process journal section",
       "Taught the maker how to photograph and upload new pieces in her own style",
     ],
     results: [
@@ -505,7 +542,7 @@ const PROJECTS = [
 function buildModalHTML(p) {
   return `
     <div class="modal-hero ${p.className}">
-      <div class="mh-title">${p.title}</div>
+      <div class="mh-title" id="modalTitle">${p.title}</div>
     </div>
     <div class="modal-body">
       <div class="modal-meta">
@@ -518,7 +555,7 @@ function buildModalHTML(p) {
       <p class="modal-summary">${p.summary}</p>
 
       <div class="modal-section">
-        <h4>Before &amp; after</h4>
+        <h3>Before &amp; after</h3>
         <div class="ba-wrap">
           <div class="ba-slider">
             <div class="ba-layer ba-after ${p.className}">
@@ -554,12 +591,12 @@ function buildModalHTML(p) {
       </div>
 
       <div class="modal-section">
-        <h4>The challenge</h4>
+        <h3>The challenge</h3>
         <p>${p.challenge}</p>
       </div>
 
       <div class="modal-section">
-        <h4>How I worked</h4>
+        <h3>How I worked</h3>
         <ul class="process-list">
           ${p.process
             .map(
@@ -574,7 +611,7 @@ function buildModalHTML(p) {
       </div>
 
       <div class="modal-section">
-        <h4>Results</h4>
+        <h3>Results</h3>
         <div class="result-grid">
           ${p.results
             .map(
@@ -589,7 +626,7 @@ function buildModalHTML(p) {
       </div>
 
       <div class="modal-section">
-        <h4>My role (exactly what I did)</h4>
+        <h3>My role (exactly what I did)</h3>
         <div class="role-box"><strong>Honest scope:</strong> ${p.role}</div>
       </div>
 
@@ -601,11 +638,19 @@ function buildModalHTML(p) {
       </div>
 
       <div class="modal-actions">
-        <a class="btn btn-coral" href="#contact" onclick="document.getElementById('modalClose').click();">
+        ${
+          project.video
+            ? `<a class="btn btn-ink" href="${project.video}" target="_blank" rel="noopener">
+          Watch the walkthrough
+          <span class="btn-arrow">→</span>
+        </a>`
+            : ""
+        }
+        <a class="btn btn-coral js-close-modal" href="#contact">
           Book a free 20-minute call
           <span class="btn-arrow">→</span>
         </a>
-        <a class="btn btn-ink" href="#work" onclick="document.getElementById('modalClose').click();">
+        <a class="btn btn-ink js-close-modal" href="#work">
           Back to all work
         </a>
       </div>
